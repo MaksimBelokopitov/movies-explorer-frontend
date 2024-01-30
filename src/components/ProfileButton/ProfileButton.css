@@ -1,0 +1,35 @@
+.profile-button {
+  width: 100px;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background-color: #F9F9F9;
+  color: #000;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.profile-button:hover{
+  opacity: 0.8;
+}
+
+.profile-button_popup {
+  width: 100px;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background-color: #F9F9F9;
+  color: #000;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+@media screen and (max-width: 830px){
+  .profile-button {
+    display: none;
+  }
+}

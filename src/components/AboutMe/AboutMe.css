@@ -1,0 +1,140 @@
+ .section-aboutme {
+  padding-top: 113px;
+  padding-bottom: 125px;
+}
+
+.section-aboutme__container {
+  margin-top: 66px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-aboutme__info {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info__title {
+  line-height: 58px;
+  letter-spacing: -2px;
+  font-size: 50px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  text-align: left;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.info__subtitle {
+  line-height: 20px;
+  font-size: 18px;
+  color: #000;
+  text-align: left;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  margin-bottom: 26px;
+  margin-top: 18px;
+}
+
+.info__text {
+  line-height: 22px;
+  text-align: left;
+}
+
+.section-aboutme__photo-container {
+  max-width: 270px;
+  max-height: 327px;
+}
+
+.section-aboutme__photo {
+  width: 100%;
+  object-fit: cover;
+}
+
+.info__link {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.info__link:hover {
+  opacity: 0.7;
+}
+
+
+@media screen and (max-width: 830px){
+
+  .section-aboutme {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  .info__title {
+    line-height: 40px;
+    letter-spacing: -1.6px;
+    font-size: 40px;
+  }
+
+  .info__subtitle {
+    line-height: 18px;
+    font-size: 12px;
+    margin-bottom: 20px;
+    margin-top: 16px;
+  }
+
+  .info__text {
+    line-height: 18px;
+  }
+
+  .section-aboutme__container {
+    gap: 49px;
+  }
+
+  .section-aboutme__info {
+    max-width: 354px;
+  }
+
+  .section-aboutme__photo-container {
+    max-width: 255px;
+    max-height: 307px;
+  }
+}
+
+ @media screen and (max-width: 500px){
+
+  .section-aboutme {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .section-aboutme__container {
+    gap: 40px;
+    margin-top: 60px;
+    flex-direction: column-reverse;
+  }
+
+  .section-aboutme__photo-container {
+    max-width: 292px;
+    max-height: 352px;
+  }
+
+  .section-aboutme__info {
+    gap: 40px;
+  }
+
+  .info__title {
+    line-height: normal;
+    letter-spacing: -1.2px;
+    font-size: 30px;
+  }
+
+  .info__subtitle {
+    line-height: 16px;
+    font-size: 11px;
+    margin-top: 20px;
+  }
+}

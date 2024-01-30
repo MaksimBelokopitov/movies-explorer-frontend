@@ -1,0 +1,142 @@
+.section-about__paragraph {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 70px;
+}
+
+.section-about__article {
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.section-about__subtitle {
+  line-height: normal;
+  letter-spacing: -0.8px;
+  font-size: 20px;
+  color: #000;
+  text-align: left;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.section-about__text {
+  line-height: 20px;
+  text-align: left;
+}
+
+.section-about__graph {
+  margin-top: 110px;
+  display: flex;
+}
+
+.section-about__graph-front {
+  flex-grow: 3;
+}
+
+.section-about__graph-weeks {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #000;
+  text-align: center;
+  line-height: normal;
+  text-align: center;
+  padding-top: 9px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.section-about__graph-weeks_back {
+  width: 228px;
+  height: 36px;
+  background-color: #2BE080;
+}
+
+.section-about__graph-weeks_front {
+  width: 100%;
+  height: 36px;
+  background-color: #F2F2F2;
+}
+
+.section-about__graph-name {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  line-height: 17px;
+  font-size: 14px;
+  color: #A0A0A0;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-top: 14px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 830px){
+
+  .section-about__text {
+    line-height: 18px;
+  }
+
+  .section-about__article {
+    max-width: 319px;
+    gap: 22px;
+  }
+
+  .section-about__graph {
+    margin-top: 93px;
+  }
+
+  .section-about__graph-weeks_back {
+    width: 140px;
+  }
+}
+
+@media screen and (max-width: 510px){
+
+  .section-about__paragraph {
+    margin-top: 60px;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .section-about__subtitle {
+    letter-spacing: -0.72px;
+    font-size: 18px;
+  }
+
+  .section-about__text {
+    line-height: 16px;
+  }
+
+  .section-about__article {
+    max-width: 319px;
+    gap: 16px;
+  }
+
+  .section-about__graph {
+   margin-top: 60px;
+  }
+
+  .section-about__graph-weeks {
+    font-size: 11px;
+    padding-top: 11px;
+  }
+
+  .section-about__graph-weeks_back {
+    width: 100px;
+    height: 35px;
+  }
+
+  .section-about__graph-weeks_front {
+    height: 35px;
+  }
+
+  .section-about__graph-name {
+    line-height: normal;
+    font-size: 11px;
+    padding-top: 10px;
+  }
+}

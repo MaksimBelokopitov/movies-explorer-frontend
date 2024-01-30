@@ -1,0 +1,38 @@
+.nav__list-autorized {
+  gap: 16px;
+}
+
+.nav__list-autorized_popup{
+  flex-direction: column;
+  margin-top: 159px;
+  gap: 28px;
+}
+
+.nav__link-autorized {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+
+.nav__link-autorized_popup {
+  color: black;
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: normal;
+  letter-spacing: 0.32px;
+}
+
+@media screen and (max-width: 830px){
+  .nav__list-autorized {
+      display: none;
+  }
+}
+
+@media screen and (max-width: 400px){
+  .nav__list-autorized_popup{
+    margin-top: 144px;
+    gap: 24px;
+  }
+}
+
