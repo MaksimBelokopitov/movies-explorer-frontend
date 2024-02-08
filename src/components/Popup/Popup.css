@@ -95,6 +95,11 @@
     right: 13.44px;
   }
 
+  .popup__button-close:hover{
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
   .popup__list {
     margin-top: 144px;
     gap: 24px;

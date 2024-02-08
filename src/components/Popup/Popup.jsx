@@ -7,7 +7,7 @@ function Popup({isOpen, popupClose}) {
   return (
     <div onClick={e => (e.currentTarget === e.target) && popupClose()} className={`popup ${isOpen && 'popup_active'}`}>
       <div className="popup__container">
-        <button className="popup__button-close" onClick={popupClose}></button>
+        <button className="popup__button-close" type='button' onClick={popupClose}></button>
         <AutorizedNavigation popupIsOpen={isOpen} />
         <ProfileButton isPopupOpen={isOpen} />
       </div>

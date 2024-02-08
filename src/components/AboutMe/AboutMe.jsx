@@ -18,7 +18,13 @@ function AboutMe() {
               а ещё увлекаюсь фильмами и спортом. Недавно начал кодить.
             </p>
           </div>
-          <a href="https://github.com/MaksimBelokopitov" className="section__link info__link">Github</a>
+          <a
+            href="https://github.com/MaksimBelokopitov"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="section__link info__link">
+              Github
+          </a>
         </article>
         <article className="section-aboutme__photo-container">
           <img src={photo} alt="Мое фото" className="section-aboutme__photo" />
