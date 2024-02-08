@@ -6,16 +6,20 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    background-color: #465DFF;;
+    background-color: #465DFF;
     justify-content: space-between;
 }
 
+.header_white{
+  background-color: transparent;
+}
+
 .header__link {
-    width: 38px;
-    height: 38px;
-    text-decoration: none;
-    background-image: url(../../images/logo-min.svg);
-    margin-right: 62px;
+  width: 38px;
+  height: 38px;
+  text-decoration: none;
+  background-image: url(../../images/logo-min.svg);
+  margin-right: 62px;
 }
 
 .header__link:hover {
@@ -33,7 +37,12 @@
   background-image: url(../../images/burger_icon.svg);
 }
 
+.header__burger_black {
+  background-image: url(../../images/burger-black.svg);
+}
+
 .header__burger:hover {
+  cursor: pointer;
   opacity: 0.8;
 }
 

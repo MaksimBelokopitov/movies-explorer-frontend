@@ -12,8 +12,7 @@ function Popup({isOpen, popupClose}) {
         <ProfileButton isPopupOpen={isOpen} />
       </div>
     </div>
-  )
-}
-
+  );
+};
 
  export default Popup

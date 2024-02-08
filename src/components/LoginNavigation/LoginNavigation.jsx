@@ -1,22 +1,23 @@
 import './LoginNavigation.css';
-import '../Navigation/Navigation.css';
 import {NavLink} from "react-router-dom";
 
-function LoginNavigation() {
+function LoginNavigation({isMain}) {
   return(
     <nav className="nav">
-      <ul className="nav__list">
+      <ul className="nav__list-login">
         <li className="nav__item">
           <NavLink
-            className={"nav__link nav__link-"}
-            to={'/movies'}>
+            className={`nav__link ${isMain&&'nav__link_white'}`}
+            to={'/signup'}>
             Регистрация
           </NavLink>
         </li>
         <li className="nav__item">
-          <button className="nav__button">
+          <NavLink
+            className={'nav__button'}
+            to={'/signin'}>
             Войти
-          </button>
+          </NavLink>
         </li>
       </ul>
     </nav>

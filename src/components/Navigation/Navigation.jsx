@@ -1,15 +1,14 @@
-import "./Navigation.css";
 import AutorizedNavigation from '../AutorizedNavigation/AutorizedNavigation'
 import LoginNavigation from '../LoginNavigation/LoginNavigation'
 
-function Navigation({isLogin}){
+function Navigation({isLogin, isMain}){
 
   return (
     <div className="navigation">
       {isLogin?
-        <AutorizedNavigation  />
+        <AutorizedNavigation isMain={isMain} />
         :
-        <LoginNavigation />
+        <LoginNavigation  isMain={isMain}/>
       }
     </div>
   );

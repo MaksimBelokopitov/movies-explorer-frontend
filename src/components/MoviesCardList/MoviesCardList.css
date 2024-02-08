@@ -1,0 +1,38 @@
+.section-movie {
+  box-sizing: border-box;
+  padding-top: 77px;
+  padding-bottom: 0;
+}
+
+.section-movie__list {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 32px 20px;
+}
+
+@media screen and (max-width: 830px){
+
+  .section-movie {
+    padding-top: 77px;
+  }
+
+  .section-movie__list {
+    gap: 36px 30px;
+  }
+}
+
+@media screen and (max-width: 500px){
+
+  .section-movie {
+    padding-top: 46px;
+  }
+
+  .section-movie__list {
+    gap: 20px;
+  }
+}
