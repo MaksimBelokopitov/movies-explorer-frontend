@@ -6,7 +6,7 @@ function SearchForm() {
     <form className="search-form" action="submit">
       <fieldset className="search-form__field">
         <input
-          className={"search-form__input"}
+          className="search-form__input"
           type="text"
           name="movie"
           placeholder="Фильм"

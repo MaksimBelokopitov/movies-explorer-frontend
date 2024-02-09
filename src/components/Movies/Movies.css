@@ -5,7 +5,7 @@
   padding-bottom: 80px;
 }
 
-.movie__button {
+.movies__button {
   margin-top: 50px;
   padding: 0;
   width: 100%;
@@ -20,7 +20,7 @@
   font-weight: 500;
 }
 
-.movie__button:hover {
+.movies__button:hover {
   cursor: pointer;
   opacity: 0.8;
 }

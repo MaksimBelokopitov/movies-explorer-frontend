@@ -1,15 +1,15 @@
-.section-movie__item {
+.movie-card__item {
   border-radius: 10px;
   box-shadow: 0px 16px 24px 0px rgba(0, 0, 0, 0.05);
 }
 
-.section-movie__image {
+.movie-card__image {
   object-fit: cover;
   width: 100%;
   display: block;
 }
 
-.section-movie__container {
+.movie-card__container {
   box-sizing: border-box;
   padding-top: 14px;
   padding-left: 12px;
@@ -19,14 +19,14 @@
   justify-content: space-between;
 }
 
-.section-movie__content {
+.movie-card__content {
   display: flex;
   flex-direction: column;
   gap: 10px;
   background-color: #FDFDFD;
 }
 
-.section-movie__title {
+.movie-card__title {
   line-height: 15.73px;
   font-size: 13px;
   color: #000;
@@ -36,7 +36,7 @@
   margin-top: 0;
 }
 
-.section-movie__text {
+.movie-card__text {
   line-height: 13.31px;
   font-size: 11px;
   color: #A0A0A0;
@@ -46,7 +46,7 @@
   margin-top: 0;
 }
 
-.section-movie__like-button {
+.movie-card__like-button {
   width: 14px;
   height: 14px;
   border: 2px solid #FFFFFF;
@@ -55,7 +55,7 @@
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.09);
 }
 
-.section-movie__delete-button {
+.movie-card__delete-button {
   width: 14px;
   height: 14px;
   border: none;
@@ -66,11 +66,11 @@
   padding: 0;
 }
 
-.section-movie__like-button_active {
+.movie-card__like-button_active {
   background-color:#2BE080;
 }
 
-.section-movie__like-button:hover {
+.movie-card__like-button:hover {
   cursor: pointer;
   opacity: 0.8;
 }

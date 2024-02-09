@@ -33,22 +33,22 @@ function MoviesCard({image}) {
   }
 
   return(
-    <li className="section-movie__item">
-      <img src={image} alt="Обложка фильма" className="section-movie__image" />
-      <div className="section-movie__container">
-        <div className="section-movie__content">
-          <h2 className="section-movie__title">33 слова о дизайне</h2>
-          <p className="section-movie__text">1ч42м</p>
+    <li className="movie-card">
+      <img src={image} alt="Обложка фильма" className="movie-card__image" />
+      <div className="movie-card__container">
+        <div className="movie-card__content">
+          <h2 className="movie-card__title">33 слова о дизайне</h2>
+          <p className="movie-card__text">1ч42м</p>
         </div>
         {isMovie?
           <button
             onClick={handleCardLike}
-            className={`section-movie__like-button ${isLiked&&'section-movie__like-button_active'}`}
+            className={`movie-card__like-button ${isLiked&&'movie-card__like-button_active'}`}
             type='button'>
           </button>
           :
           <button
-            className={'section-movie__delete-button'}
+            className='movie-card__delete-button'
             type='button'>
           </button>
         }

@@ -8,9 +8,9 @@ function Login() {
     <main className='register'>
       <NavLink
         to={'/'}
-        className={'register__logo'}>
+        className='register__logo'>
       </NavLink>
-      <h2 className={'register__title'}>Добро пожаловать!</h2>
+      <h2 className='register__title'>Рады видеть!</h2>
       <AuthForm />
     </main>
   );

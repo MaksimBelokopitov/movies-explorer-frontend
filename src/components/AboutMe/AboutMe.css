@@ -16,7 +16,7 @@
   justify-content: space-between;
 }
 
-.info__title {
+.section-aboutme__info-title {
   line-height: 58px;
   letter-spacing: -2px;
   font-size: 50px;
@@ -27,7 +27,7 @@
   margin-top: 0;
 }
 
-.info__subtitle {
+.section-aboutme__info-subtitle {
   line-height: 20px;
   font-size: 18px;
   color: #000;
@@ -38,7 +38,7 @@
   margin-top: 18px;
 }
 
-.info__text {
+.section-aboutme__info-text {
   line-height: 22px;
   text-align: left;
 }
@@ -53,13 +53,13 @@
   object-fit: cover;
 }
 
-.info__link {
+.section-aboutme__info-link {
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
 }
 
-.info__link:hover {
+.section-aboutme__info-link:hover {
   opacity: 0.7;
 }
 
@@ -71,20 +71,20 @@
     padding-bottom: 90px;
   }
 
-  .info__title {
+  .section-aboutme__info-title {
     line-height: 40px;
     letter-spacing: -1.6px;
     font-size: 40px;
   }
 
-  .info__subtitle {
+  .section-aboutme__info-subtitle {
     line-height: 18px;
     font-size: 12px;
     margin-bottom: 20px;
     margin-top: 16px;
   }
 
-  .info__text {
+  .section-aboutme__info-text {
     line-height: 18px;
   }
 
@@ -115,6 +115,7 @@
     gap: 40px;
     margin-top: 60px;
     flex-direction: column-reverse;
+    align-items: center;
   }
 
   .section-aboutme__photo-container {
@@ -126,13 +127,13 @@
     gap: 40px;
   }
 
-  .info__title {
+  .section-aboutme__info-title {
     line-height: normal;
     letter-spacing: -1.2px;
     font-size: 30px;
   }
 
-  .info__subtitle {
+  .section-aboutme__info-subtitle {
     line-height: 16px;
     font-size: 11px;
     margin-top: 20px;

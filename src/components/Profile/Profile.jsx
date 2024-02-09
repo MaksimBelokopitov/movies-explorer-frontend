@@ -36,11 +36,11 @@ function Profile() {
           action="submit"
           className='profile__form'
         >
-          <fieldset className='form__field'>
-            <label className='form__label' htmlFor="name">Имя
+          <fieldset className='profile__form-field'>
+            <label className='profile__form-label' htmlFor="name">Имя
               <input
                 type="text"
-                className={'form__input'}
+                className='profile__form-input'
                 value={values.name??'Mаксим'}
                 onChange={handleChange}
                 disabled
@@ -48,18 +48,20 @@ function Profile() {
                 id="name"
                 minLength={2}
                 maxLength={30}
+                placeholder="Имя"
               />
               <span className={`profile__error ${!isValid && "profile__error_visible"}`}>{errors.name}</span>
             </label>
-            <label className='form__label' htmlFor="email">E-mail
+            <label className='profile__form-label' htmlFor="email">E-mail
               <input
                 type="email"
-                className={'form__input'}
+                className='profile__form-input'
                 value={values.email??'a@yandex.ru'}
                 onChange={handleChange}
                 name="email"
                 id="email"
                 disabled
+                placeholder="Email"
               />
               <span className={`profile__error ${!isValid && "profile__error_visible"}`}>{errors.email}</span>
             </label>

@@ -46,15 +46,20 @@
 
 .popup__button-close{
   position: absolute;
-  top: 22.44px;
-  right: 22.44px;
-  width: 22px;
-  height: 22px;
+  top: 23px;
+  right: 23px;
+  width: 30px;
+  height: 30px;
   border: none;
   background-color: transparent;
   background-image: url(../../images/exit_icon.svg);
   background-size: cover;
   padding: 0;
+}
+
+.popup__button-close:hover{
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .popup__list {

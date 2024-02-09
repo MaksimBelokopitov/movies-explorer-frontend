@@ -5,7 +5,7 @@ function ProfileButton({isPopupOpen}) {
   return(
     <NavLink
       to={'/profile'}
-      className={`${isPopupOpen ? 'profile-button_popup' : 'profile-button'}`}
+      className={`${isPopupOpen ? 'profile-button-popup' : 'profile-button'}`}
     >
       Аккаунт
     </NavLink>

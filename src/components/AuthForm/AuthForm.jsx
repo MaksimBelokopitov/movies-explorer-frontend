@@ -18,7 +18,7 @@ function AuthForm() {
   },[navigate]);
 
   return(
-    <form action="submit" className="auth__form">
+    <form action="submit" className="auth">
       <fieldset className='auth__field'>
         {isRegister&&
           <label className='auth__label' htmlFor="name">Имя
@@ -28,6 +28,7 @@ function AuthForm() {
               id="name"
               name="name"
               type="text"
+              placeholder="Имя"
             />
           </label>
         }
@@ -37,7 +38,8 @@ function AuthForm() {
             required
             id="email"
             name="email"
-            type="e-mail"
+            type="email"
+            placeholder="Email"
           />
         </label>
         <label className='auth__label' htmlFor="password">Пароль
@@ -47,6 +49,7 @@ function AuthForm() {
               id="password"
               name="password"
               type="password"
+              placeholder="Пароль"
           />
         </label>
       </fieldset>

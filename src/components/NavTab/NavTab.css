@@ -8,6 +8,9 @@
 }
 
 .section-navtab__nav-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
   gap: 40px;
   margin: 0;
   padding: 0;

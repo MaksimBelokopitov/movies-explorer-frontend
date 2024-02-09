@@ -14,7 +14,7 @@ function LoginNavigation({isMain}) {
         </li>
         <li className="nav__item">
           <NavLink
-            className={'nav__button'}
+            className='nav__button'
             to={'/signin'}>
             Войти
           </NavLink>

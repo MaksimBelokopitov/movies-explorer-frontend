@@ -22,7 +22,7 @@
   opacity: 0.8;
 }
 
-.profile-button_popup {
+.profile-button-popup {
   width: 100px;
   height: 32px;
   border: 1px solid transparent;
@@ -41,7 +41,7 @@
   text-decoration: none;
 }
 
-.profile-button_popup:hover {
+.profile-button-popup:hover {
   opacity: 0.7;
   cursor: pointer;
 }
