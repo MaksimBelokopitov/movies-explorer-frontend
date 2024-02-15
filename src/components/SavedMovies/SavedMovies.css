@@ -1,0 +1,22 @@
+.saved-movies{
+  box-sizing: border-box;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-bottom: 140px;
+}
+
+@media screen and (max-width: 830px){
+
+  .saved-movies {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 500px){
+
+  .saved-movies {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
