@@ -1,28 +1,33 @@
 import './AutorizedNavigation.css';
 import { NavLink } from 'react-router-dom';
+import { AppContext } from '../../context/AppContext';
+import { useContext } from 'react';
 
-function AutorizedNavigation({popupIsOpen, isMain, isMovies, isSavedMovies,}){
+function AutorizedNavigation(){
+
+  const appContext = useContext(AppContext);
+
   return(
     <nav className="nav">
-      {popupIsOpen?
+      {appContext.isPopupOpen?
         <ul className="nav__list-popup">
           <li className="nav__item">
             <NavLink
-              className={`nav__link-popup ${isMain && "nav__link-popup_active"}`}
+              className={`nav__link-popup ${appContext.isMain && "nav__link-popup_active"}`}
               to={'/'}>
               Главная
             </NavLink>
           </li>
           <li className="nav__item">
             <NavLink
-              className={`nav__link-popup ${isMovies && "nav__link-popup_active"}`}
+              className={`nav__link-popup ${appContext.isMovies && "nav__link-popup_active"}`}
               to={'/movies'}>
               Фильмы
             </NavLink>
           </li>
           <li className="nav__item">
             <NavLink
-              className={`nav__link-popup ${isSavedMovies && "nav__link-popup_active"}`}
+              className={`nav__link-popup ${appContext.isSavedMovies && "nav__link-popup_active"}`}
               to={'/saved-movies'}>
               Сохраненые фильмы
             </NavLink>
@@ -32,14 +37,14 @@ function AutorizedNavigation({popupIsOpen, isMain, isMovies, isSavedMovies,}){
         <ul className="nav__list">
           <li className="nav__item">
             <NavLink
-              className={`nav__link ${isMain&&'nav__link_white'}`}
+              className={`nav__link ${appContext.isMain&&'nav__link_white'}`}
               to={'/movies'}>
               Фильмы
             </NavLink>
           </li>
           <li className="nav__item">
             <NavLink
-              className={`nav__link ${isMain&&'nav__link_white'}`}
+              className={`nav__link ${appContext.isMain&&'nav__link_white'}`}
               to={'/saved-movies'}>
               Сохраненые фильмы
             </NavLink>

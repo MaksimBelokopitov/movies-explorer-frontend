@@ -1,17 +1,21 @@
-import AutorizedNavigation from '../AutorizedNavigation/AutorizedNavigation'
-import LoginNavigation from '../LoginNavigation/LoginNavigation'
+import AutorizedNavigation from '../AutorizedNavigation/AutorizedNavigation';
+import LoginNavigation from '../LoginNavigation/LoginNavigation';
+import { AppContext } from '../../context/AppContext';
+import { useContext } from 'react';
 
-function Navigation({isLogin, isMain}){
+function Navigation(){
+
+  const appContext = useContext(AppContext);
 
   return (
     <div className="navigation">
-      {isLogin?
-        <AutorizedNavigation isMain={isMain} />
+      {appContext.isLogin?
+        <AutorizedNavigation />
         :
-        <LoginNavigation  isMain={isMain}/>
+        <LoginNavigation />
       }
     </div>
   );
-}
+};
 
 export default Navigation

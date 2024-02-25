@@ -1,29 +1,43 @@
-import { useState, useEffect } from 'react';
-import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import './Profile.css';
+import { useState, useContext } from 'react';
+import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
+import { AppContext } from '../../context/AppContext';
 
-function Profile() {
 
-  const {values, handleChange, errors, isValid, setValues, resetForm} = useFormAndValidation();
+
+function Profile({handleProfileSubmit, signOut}) {
+  const {
+    values,
+    setValues,
+    handleNameChange,
+    handleEmailChange,
+    errors,
+    isValid,
+  } = useFormAndValidation();
+
   const [isEdit, setIsEdit] = useState(false);
-
-  useEffect(() => {
-    setValues({
-      name: values.name,
-      email: values.email});
-  }, [isEdit]);
+  const curentUser = useContext(CurrentUserContext);
+  const appContext = useContext(AppContext);
+  const isButtonVisible = isValid.name &&isValid.email;
 
   function handleEditClick() {
     setIsEdit(true);
-    const inputs = document.querySelectorAll('.form__input');
+    const inputs = document.querySelectorAll('.profile__form-input');
     inputs.forEach((elem)=> {
       elem.disabled=false;
     })
   };
 
-  function handleSaveClick() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    appContext.setIsError(false);
+    if(Object.keys(values).length>0){
+      handleProfileSubmit(values, e)
+    }
+    setValues({});
     setIsEdit(false);
-    const inputs = document.querySelectorAll('.form__input');
+    const inputs = document.querySelectorAll('.profile__form-input');
     inputs.forEach((elem)=> {
       elem.disabled=true;
     })
@@ -31,7 +45,7 @@ function Profile() {
 
   return(
     <main className="profile">
-      <h2 className="profile__title">Привет, Максим!</h2>
+      <h2 className="profile__title">{`Привет, ${curentUser.name}`}</h2>
         <form
           action="submit"
           className='profile__form'
@@ -41,8 +55,8 @@ function Profile() {
               <input
                 type="text"
                 className='profile__form-input'
-                value={values.name??'Mаксим'}
-                onChange={handleChange}
+                defaultValue={curentUser.name}
+                onChange={handleNameChange}
                 disabled
                 name="name"
                 id="name"
@@ -50,42 +64,48 @@ function Profile() {
                 maxLength={30}
                 placeholder="Имя"
               />
-              <span className={`profile__error ${!isValid && "profile__error_visible"}`}>{errors.name}</span>
+              {!isValid.name && <span className='profile__error'>{errors.name}</span>}
             </label>
             <label className='profile__form-label' htmlFor="email">E-mail
               <input
                 type="email"
                 className='profile__form-input'
-                value={values.email??'a@yandex.ru'}
-                onChange={handleChange}
+                defaultValue={curentUser.email}
+                onChange={handleEmailChange}
                 name="email"
                 id="email"
                 disabled
                 placeholder="Email"
               />
-              <span className={`profile__error ${!isValid && "profile__error_visible"}`}>{errors.email}</span>
+              {!isValid.email && <span className='profile__error'>{errors.email}</span>}
             </label>
           </fieldset>
-          {isEdit?
-            <button
-              className={`profile__save-button ${!isValid&&'profile__save-button_disabled'}`}
-              type='submit'
-              onClick={handleSaveClick}
-              >
-                Сохранить
-            </button>
-          :
-            <div className="profile__button-container">
+          <fieldset className='profile__form-field profile__form-field_button'>
+            {appContext.isError&&<p className='profile__error-api'>{appContext.errorMessage}</p>}
+            {isEdit?
               <button
-                className="profile__button profile__button_edit"
-                type='button'
-                onClick={handleEditClick}
-              >
-                Редактировать
+                className={`profile__save-button ${!isButtonVisible&&'profile__save-button_disabled'}`}
+                type='submit'
+                onClick={handleSubmit}
+                >
+                  Сохранить
               </button>
-              <button className="profile__button profile__button_exit" type='button'>Выйти из аккаунта</button>
-            </div>
-          }
+            :
+              <div className="profile__button-container">
+                <button
+                  className="profile__button profile__button_edit"
+                  type='button'
+                  onClick={handleEditClick}
+                >
+                  Редактировать
+                </button>
+                <button
+                  className="profile__button profile__button_exit"
+                  type='button'
+                  onClick={signOut}>Выйти из аккаунта</button>
+              </div>
+            }
+          </fieldset>
         </form>
     </main>
   );

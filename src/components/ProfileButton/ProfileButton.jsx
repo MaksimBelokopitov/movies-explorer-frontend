@@ -1,11 +1,16 @@
 import './ProfileButton.css';
 import { NavLink } from 'react-router-dom';
+import { AppContext } from '../../context/AppContext';
+import { useContext } from 'react';
 
-function ProfileButton({isPopupOpen}) {
+function ProfileButton() {
+
+  const appContext = useContext(AppContext);
+
   return(
     <NavLink
       to={'/profile'}
-      className={`${isPopupOpen ? 'profile-button-popup' : 'profile-button'}`}
+      className={`${appContext.isPopupOpen ? 'profile-button-popup' : 'profile-button'}`}
     >
       Аккаунт
     </NavLink>

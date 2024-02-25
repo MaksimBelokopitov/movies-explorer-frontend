@@ -1,58 +1,81 @@
-import { useState, useEffect } from 'react';
-import {   useLocation, useNavigate } from 'react-router-dom';
 import './MoviesCard.css';
+import { useEffect, useContext } from 'react';
+import { useLocation, NavLink } from 'react-router-dom';
+import { AppContext } from '../../context/AppContext';
 
-function MoviesCard({image}) {
+function MoviesCard({card , deleteMovie, savedMoviesList, likeMovie}) {
 
   const location = useLocation();
-  const navigate = useNavigate();
+  const appContext = useContext(AppContext);
+  let imageLink
+  let isLiked
 
-  const [isMovie, setIsMovie] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+  if(location.pathname ==='/movies'){
+    isLiked = savedMoviesList.some(i => i.movieId === card.id)
+  };
 
-  function searchLocation() {
-    if (location.pathname === '/movies') {
-      setIsMovie(true);
-    }
-    else {
-      setIsMovie(false);
-    }
+  if((card.image.url !== null && card.image.url !== undefined)){
+    imageLink = `https://api.nomoreparties.co/${card.image.url}`;
+  }
+  else  {
+    imageLink = card.image;
   };
 
   useEffect(() => {
-    searchLocation();
-  },[navigate]);
+    appContext.showCards();
+  },[appContext.screenWidth])
 
-  function handleCardLike() {
-    if(isLiked) {
-      setIsLiked(false);
+  function movieDuration() {
+    const hours = Math.trunc(card.duration / 60);
+    const minutes = card.duration % 60;
+    return hours + 'ч' + minutes + 'м'
+  };
+
+  function handleLikeClick() {
+    if(isLiked){
+      savedMoviesList.forEach(element => {
+        if(element.movieId === card.id) {
+          deleteMovie(element._id)
+        }
+      });
     }
-    else {
-      setIsLiked(true)
+    else{
+      likeMovie(card)
     }
+  }
+
+  function handleDeleteClick() {
+    deleteMovie(card._id)
   }
 
   return(
     <li className="movie-card">
-      <img src={image} alt="Обложка фильма" className="movie-card__image" />
+      <a
+        href={card.trailerLink}
+        className="movie-card__link"
+        target="_blank"
+        rel="noopener noreferrer">
+      </a>
+      <img src={imageLink} alt={card.nameRU} className="movie-card__image" />
       <div className="movie-card__container">
         <div className="movie-card__content">
-          <h2 className="movie-card__title">33 слова о дизайне</h2>
-          <p className="movie-card__text">1ч42м</p>
+          <h2 className="movie-card__title">{card.nameRU}</h2>
+          <p className="movie-card__text">{movieDuration()}</p>
         </div>
-        {isMovie?
+        {appContext.isMovies?
           <button
-            onClick={handleCardLike}
+            onClick={handleLikeClick}
             className={`movie-card__like-button ${isLiked&&'movie-card__like-button_active'}`}
             type='button'>
           </button>
           :
           <button
             className='movie-card__delete-button'
-            type='button'>
+            type='button'
+            onClick={handleDeleteClick}
+          >
           </button>
         }
-
       </div>
     </li>
   );

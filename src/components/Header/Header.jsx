@@ -2,18 +2,22 @@ import './Header.css';
 import { NavLink } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import ProfileButton from '../ProfileButton/ProfileButton';
+import { AppContext } from '../../context/AppContext';
+import { useContext } from 'react';
 
-function Header({openPopup, isLogin, isMain}){
+function Header({openPopup}){
+
+  const appContext = useContext(AppContext);
 
   return (
-    <header className={`header ${!isMain&&'header_white'}`}>
+    <header className={`header ${!appContext.isMain&&'header_white'}`}>
       <NavLink
         className="header__link"
         to={'/'}>
       </NavLink>
-      <Navigation isLogin={isLogin} isMain={isMain}/>
-      {isLogin&&<ProfileButton />}
-      {isLogin&&<button className={`header__burger ${!isMain&&'header__burger_black'}`} onClick={openPopup}></button>}
+      <Navigation />
+      {appContext.isLogin&&<ProfileButton />}
+      {appContext.isLogin&&<button className={`header__burger ${!appContext.isMain&&'header__burger_black'}`} onClick={openPopup}></button>}
     </header>
   );
 };
