@@ -1,7 +1,4 @@
 export const BASE_URL = 'https://api.movieboxs.nomoredomainsmonster.ru'
-// export const BASE_URL = 'http://localhost:3001'
-
-
 
 function getRequest(url, options) {
   return fetch(url, options)
