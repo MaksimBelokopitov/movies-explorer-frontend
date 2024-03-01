@@ -8,4 +8,4 @@
 
 Ссылка на проект  https://movieboxs.nomoredomainsmonster.ru/
 
-Ссылка на пулл-реквест https://github.com/MaksimBelokopitov/movies-explorer-frontend/pull/4
+Ссылка на пулл-реквест https://github.com/MaksimBelokopitov/movies-explorer-frontend/pull/5
