@@ -1,6 +1,7 @@
 import './AuthForm.css';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 
 function AuthForm({
   handleSubmit,
@@ -15,7 +16,9 @@ function AuthForm({
 
   const navigate = useNavigate();
   const location = useLocation();
-  const isButtonVisible = isValid.name &&isValid.email &&isValid.password;
+  const RegButtonVisible = isValid.name &&isValid.email &&isValid.password;
+  const AuthButtonVisible = isValid.email &&isValid.password;
+  const appContext = useContext(AppContext);
 
   const [isRegister, setIsRegister] = useState(false);
 
@@ -36,7 +39,7 @@ function AuthForm({
         {isRegister&&
           <label className='auth__label' htmlFor="name">Имя
             <input
-              className="auth__input"
+              className={`auth__input ${appContext.onSubmit&&'auth__input_disabled'}`}
               required
               id="name"
               name="name"
@@ -49,7 +52,7 @@ function AuthForm({
         }
         <label className='auth__label' htmlFor="email">E-mail
           <input
-            className="auth__input"
+            className={`auth__input ${appContext.onSubmit&&'auth__input_disabled'}`}
             required
             id="email"
             name="email"
@@ -61,11 +64,11 @@ function AuthForm({
         </label>
         <label className='auth__label' htmlFor="password">Пароль
           <input
-              className="auth__input"
+              className={`auth__input ${appContext.onSubmit&&'auth__input_disabled'}`}
               required
               id="password"
               name="password"
-              type="text"
+              type="password"
               placeholder="Пароль"
               onChange={handleChange}
 
@@ -75,12 +78,21 @@ function AuthForm({
       </fieldset>
       <fieldset className='auth__field auth__field-button'>
       {isError&&<p className='auth__error-api'>{errorMessage}</p>}
+      {isRegister?
         <button
           type="submit"
-          className={isButtonVisible ? 'auth__button':'auth__button_disabled'}
+          className={RegButtonVisible && !appContext.onSubmit ? 'auth__button':'auth__button_disabled'}
         >
-            {isRegister?'Зарегистрироваться':'Войти'}
+          Зарегистрироваться
         </button>
+        :
+        <button
+          type="submit"
+          className={AuthButtonVisible && !appContext.onSubmit ? 'auth__button':'auth__button_disabled'}
+        >
+          Войти
+        </button>
+      }
         {isRegister?
           <p className='auth__subtitle'>Уже зарегистрированы?
             <NavLink to="/signin" className="auth__link">

@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 const ProtectedRouteElement = ({ element: Component, ...props  }) => {
   const appContext = useContext(AppContext);
   return (
-    appContext.isLogin ? <Component {...props} /> : <Navigate to="/sign-up" replace/>
+    appContext.isLogin ? <Component {...props} /> : <Navigate to="/" replace/>
 )}
 
 export default ProtectedRouteElement;

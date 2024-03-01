@@ -3,10 +3,9 @@ import AuthForm from '../AuthForm/AuthForm';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import * as auth from '../../utils/MainApi';
-import { regErr, regErrEmail } from '../../utils/constants';
 import { useContext, useState } from 'react';
 import { AppContext } from '../../context/AppContext';
-import { authErr } from '../../utils/constants';
+import { AUTH_ERR } from '../../utils/constants';
 
 function Login() {
   const {
@@ -16,7 +15,7 @@ function Login() {
     handleEmailChange,
     errors,
     isValid,
-    resetForm} = useFormAndValidation();
+    } = useFormAndValidation();
 
     const navigate = useNavigate();
     const [isError, setIsError] = useState(false);
@@ -25,7 +24,7 @@ function Login() {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-
+      appContext.setOnSubmit(true);
       const { email, password } = values;
       auth.authorize(email, password)
       .then((data) => {
@@ -38,12 +37,15 @@ function Login() {
       .catch((err) => {
         setIsError(true);
         if(err.stutus = 401){
-          setErrorMessage(authErr);
+          setErrorMessage(AUTH_ERR);
         }
         else{
           console.log(err);
         }
-      });
+      })
+      .finally(() => {
+        appContext.setOnSubmit(false);
+      })
     }
 
   return(

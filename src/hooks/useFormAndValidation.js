@@ -1,11 +1,14 @@
+import { CurrentUserContext } from '../context/CurrentUserContext';
+import { NAME_REG_EX, NAME_ERR, NAME_ERR_SMALL, EMAIL_REG_EX, EMAIL_ERR } from '../utils/constants';
+import {useState, useCallback, useContext} from 'react';
 
-import { nameRegEx, nameErr, nameErrSmall, emailRegEx, emailErr } from '../utils/constants';
-import {useState, useCallback} from 'react';
 
 export function useFormAndValidation() {
+  const currentUser = useContext(CurrentUserContext)
   const [ values, setValues ] = useState({});
   const [ errors, setErrors ] = useState({});
-  const [ isValid, setIsValid ] = useState({name: true, email: true, password: true});
+  const [ isValid, setIsValid ] = useState({name: false, email: false, password: false});
+  const [ isNewData, setIsNewData ] = useState({name: false, email: false});
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -21,29 +24,40 @@ export function useFormAndValidation() {
 
   const handleNameChange = (e) => {
     const {name, value} = e.target
-    if(nameRegEx.test(value)&&value.length >= 2){
-      setValues({...values, [name]: value });
+    setValues({...values, [name]: value });
+    if(NAME_REG_EX.test(value)&&value.length >= 2){
       setIsValid({...isValid, [name]: true});
+      if(value === currentUser.name) {
+        setIsNewData({...isNewData, [name]: false })
+      }
+      else {
+        setIsNewData({...isNewData, [name]: true })
+      }
     }
-    else if(!nameRegEx.test(value)) {
-      setErrors({...errors, [name]: nameErr});
+    else if(!NAME_REG_EX.test(value)) {
+      setErrors({...errors, [name]: NAME_ERR});
       setIsValid({...isValid, [name]: false});
     }
     else if (value.length <2) {
-      setErrors({...errors, [name]: nameErrSmall});
+      setErrors({...errors, [name]: NAME_ERR_SMALL});
       setIsValid({...isValid, [name]: false});
     }
   }
 
   const handleEmailChange = (e) => {
     const {name, value} = e.target
-    if(emailRegEx.test(value)){
-      setValues({...values, [name]: value });
+    setValues({...values, [name]: value });
+    if(EMAIL_REG_EX.test(value)){
       setIsValid({...isValid, [name]: true});
-
+      if(value === currentUser.email) {
+        setIsNewData({...isNewData, [name]: false })
+      }
+      else {
+        setIsNewData({...isNewData, [name]: true })
+      }
      }
-    else if(!emailRegEx.test(value)) {
-      setErrors({...errors, [name]: emailErr});
+    else if(!EMAIL_REG_EX.test(value)) {
+      setErrors({...errors, [name]: EMAIL_ERR});
       setIsValid({...isValid, [name]: false});
     }
   }
@@ -54,6 +68,6 @@ export function useFormAndValidation() {
     setIsValid(newIsValid);
   }, [setValues, setErrors, setIsValid]);
 
-  return { values, setValues, handleChange, handleNameChange, handleEmailChange, errors, isValid, setIsValid, resetForm };
+  return { values, setValues, isNewData, handleChange, handleNameChange, handleEmailChange, errors, isValid, setIsValid, resetForm };
 }
 

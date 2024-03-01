@@ -1,9 +1,15 @@
 import './MoviesCard.css';
-import { useEffect, useContext } from 'react';
-import { useLocation, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { useLocation, } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
+import { SHORT_MOVIE_TIME_COUNT } from '../../utils/constants';
 
-function MoviesCard({card , deleteMovie, savedMoviesList, likeMovie}) {
+function MoviesCard({
+  card,
+  deleteMovie,
+  savedMoviesList,
+  likeMovie,
+}) {
 
   const location = useLocation();
   const appContext = useContext(AppContext);
@@ -21,13 +27,9 @@ function MoviesCard({card , deleteMovie, savedMoviesList, likeMovie}) {
     imageLink = card.image;
   };
 
-  useEffect(() => {
-    appContext.showCards();
-  },[appContext.screenWidth])
-
   function movieDuration() {
-    const hours = Math.trunc(card.duration / 60);
-    const minutes = card.duration % 60;
+    const hours = Math.trunc(card.duration / SHORT_MOVIE_TIME_COUNT);
+    const minutes = card.duration % SHORT_MOVIE_TIME_COUNT;
     return hours + 'ч' + minutes + 'м'
   };
 

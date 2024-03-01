@@ -38,6 +38,10 @@
   width: 60%;
 }
 
+.search-form__input_disabled {
+  pointer-events: none;
+}
+
 .search-form__button {
   width: 80px;
   height: 34px;
@@ -48,6 +52,10 @@
   border: none;
   border-radius: 40px;
   padding: 0;
+}
+
+.search-form__button_disabled {
+  pointer-events: none;
 }
 
 .search-form__button:hover {
@@ -76,6 +84,10 @@
   width: 0;
   height: 0;
   appearance: nones;
+}
+
+.search-form__checkbox_disabled {
+  pointer-events: none;
 }
 
 .search-form__slider{

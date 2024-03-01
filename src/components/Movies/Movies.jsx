@@ -6,35 +6,50 @@ import { AppContext } from '../../context/AppContext';
 import { useContext, useEffect } from 'react';
 import { MOVIE_SEARCH_ERR, MOVIE_SEARCH_EMPTY } from '../../utils/constants';
 
-function Movies({ moviesList, savedMoviesList, movieSearch, likeMovie , deleteMovie }) {
+function Movies({
+  filteredList,
+  savedMoviesList,
+  movieSearch,
+  likeMovie,
+  deleteMovie,
+  buttonMoreVisible,
+  showCards,
+  checkboxSearch,
+  checkboxSearchOff
+ }) {
+
   const appContext = useContext(AppContext);
-  useEffect(() => {
-    if(appContext.isLoading){
-      appContext.setCardListVisible(false);
-      appContext.setMovieErr(false);
-      appContext.setMovieEmpty(false);
-    }
-  }, [appContext.isLoading])
 
   useEffect(() => {
-    if(moviesList.length >0){
+    if(filteredList.length >0){
       appContext.setCardListVisible(true);
       appContext.setMovieEmpty(false);
     }
-    if(moviesList.length === 0){
+    if(filteredList.length === 0){
       appContext.setCardListVisible(false);
     }
       appContext.setMovieErr(false);
-      appContext.restoreCheckBoxStatus();
-  },[moviesList])
+      appContext.restoreCheckboxStatus();
+  },[filteredList])
 
   return(
     <main className="movies">
-      <SearchForm  movieSearch={movieSearch}/>
+      <SearchForm
+        movieSearch={movieSearch}
+        checkboxSearch={checkboxSearch}
+        checkboxSearchOff={checkboxSearchOff}
+      />
       {appContext.isLoading&&<Preloader />}
       {appContext.movieEmpty&&<p className='movie__error'>{MOVIE_SEARCH_EMPTY}</p>}
       {appContext.movieErr&&<p className='movie__error'>{MOVIE_SEARCH_ERR}</p>}
-      {appContext.cardListVisible&&<MoviesCardList moviesList={moviesList} savedMoviesList={savedMoviesList} likeMovie={likeMovie} deleteMovie={deleteMovie} />}
+      {appContext.cardListVisible&&
+        <MoviesCardList
+          filteredList={filteredList}
+          savedMoviesList={savedMoviesList}
+          likeMovie={likeMovie}
+          deleteMovie={deleteMovie}
+          buttonMoreVisible={buttonMoreVisible}
+          showCards={showCards} />}
     </main>
   )
 }

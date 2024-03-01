@@ -37,14 +37,22 @@ function AutorizedNavigation(){
         <ul className="nav__list">
           <li className="nav__item">
             <NavLink
-              className={`nav__link ${appContext.isMain&&'nav__link_white'}`}
+              className={({isActive}) =>
+              isActive ?
+                "nav__link_active"
+                :
+                `nav__link ${appContext.isMain&&'nav__link_white'}`}
               to={'/movies'}>
               Фильмы
             </NavLink>
           </li>
           <li className="nav__item">
             <NavLink
-              className={`nav__link ${appContext.isMain&&'nav__link_white'}`}
+              className={({isActive}) =>
+              isActive ?
+                "nav__link_active"
+                :
+                `nav__link ${appContext.isMain&&'nav__link_white'}`}
               to={'/saved-movies'}>
               Сохраненые фильмы
             </NavLink>
