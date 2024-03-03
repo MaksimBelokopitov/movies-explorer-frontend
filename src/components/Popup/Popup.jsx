@@ -1,19 +1,19 @@
 import './Popup.css';
 import AutorizedNavigation from '../AutorizedNavigation/AutorizedNavigation';
 import ProfileButton from '../ProfileButton/ProfileButton';
+import { AppContext } from '../../context/AppContext';
+import { useContext } from 'react';
 
-function Popup({isOpen, isMain, isMovies, isSavedMovies, popupClose}) {
+function Popup({ popupClose }) {
+
+  const appContext = useContext(AppContext);
 
   return (
-    <div onClick={e => (e.currentTarget === e.target) && popupClose()} className={`popup ${isOpen && 'popup_active'}`}>
+    <div onClick={e => (e.currentTarget === e.target) && popupClose()} className={`popup ${appContext.isPopupOpen && 'popup_active'}`}>
       <div className="popup__container">
         <button className="popup__button-close" type='button' onClick={popupClose}></button>
-        <AutorizedNavigation
-          popupIsOpen={isOpen}
-          isMain={isMain}
-          isMovies={isMovies}
-          isSavedMovies={isSavedMovies}/>
-        <ProfileButton isPopupOpen={isOpen} />
+        <AutorizedNavigation />
+        <ProfileButton />
       </div>
     </div>
   );

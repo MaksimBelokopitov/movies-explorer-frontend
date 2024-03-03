@@ -26,7 +26,10 @@
   font-weight: normal;
 }
 
-.page-error__link {
+.page-error__button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
   margin-top: 184px;
   text-decoration: none;
   line-height: 16.94px;
@@ -34,6 +37,11 @@
   color: #FF6838;
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-weight: normal;
+}
+
+.page-error__button:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 830px){
@@ -63,7 +71,7 @@
     font-size: 12px;
   }
 
-  .page-error__link {
+  .page-error__button {
     margin-top: 284px;
     line-height: 14.52px;
     font-size: 12px;

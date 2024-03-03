@@ -1,13 +1,18 @@
 import './LoginNavigation.css';
 import {NavLink} from "react-router-dom";
+import { AppContext } from '../../context/AppContext';
+import { useContext } from 'react';
 
-function LoginNavigation({isMain}) {
+function LoginNavigation() {
+
+  const appContext = useContext(AppContext);
+
   return(
     <nav className="nav">
       <ul className="nav__list-login">
         <li className="nav__item">
           <NavLink
-            className={`nav__link ${isMain&&'nav__link_white'}`}
+            className={`nav__link ${appContext.isMain&&'nav__link_white'}`}
             to={'/signup'}>
             Регистрация
           </NavLink>
