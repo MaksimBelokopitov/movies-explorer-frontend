@@ -6,7 +6,6 @@ import { useContext, useEffect} from 'react';
 function MoviesCardList({
   filteredList,
   deleteMovie,
-  savedMoviesList,
   likeMovie,
   buttonMoreVisible,
   showCards}) {
@@ -25,7 +24,6 @@ function MoviesCardList({
               key={item.id || item._id}
               card={item}
               deleteMovie={deleteMovie}
-              savedMoviesList={savedMoviesList}
               likeMovie={likeMovie}
             />
           )}

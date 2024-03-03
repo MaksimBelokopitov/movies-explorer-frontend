@@ -18,6 +18,10 @@ function SavedMovies({
   const isSavedMovies = true;
 
   useEffect(() => {
+    appContext.setFilteredSavedMovies(appContext.savedMoviesList)
+},[])
+
+  useEffect(() => {
       if(filteredList.length >0){
         appContext.setCardListVisible(true);
         appContext.setMovieEmpty(false);
@@ -26,8 +30,6 @@ function SavedMovies({
       if(filteredList.length === 0){
         appContext.setCardListVisible(false);
       };
-
-    appContext.restoreSavedCheckboxStatus();
   },[ filteredList])
 
   return(
@@ -43,7 +45,6 @@ function SavedMovies({
         <MoviesCardList
           deleteMovie={deleteMovie}
           filteredList={filteredList}
-          isSavedMovies={isSavedMovies}
           showCards={showCards}/>}
     </main>
   )

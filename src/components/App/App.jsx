@@ -46,14 +46,14 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [cardListVisible, setCardListVisible] = useState(false);
   const [moviesList, setMoviesList] = useLocalStorageState('moviesList', []);
-  const [savedMoviesList, setSavedMoviesList] = useState([])
+  const [savedMoviesList, setSavedMoviesList] = useState([]);
+  const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
   const [movieErr, setMovieErr] = useState(false);
   const [movieEmpty, setMovieEmpty] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [buttonMoreVisible, setButtonMoreVisible] = useState(false);
   const [isError, setIsError] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
-  const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
   const [profileChangeOk, setProfileChangeOk] = useState(false);
   const [filteredMovies, setFilteredMovies] = useLocalStorageState('filtredList', []);
   const [onSubmit, setOnSubmit] = useState(false);
@@ -83,6 +83,10 @@ function App() {
         });
     }
   },[isLogin]);
+
+  useEffect(() =>{
+    setFilteredSavedMovies(savedMoviesList);
+  },[savedMoviesList]);
 
   useEffect(() => {
     searchLocation();
@@ -210,15 +214,12 @@ function App() {
     }
   }
 
-
-
   function handleSavedMovieSearch(data) {
     setIsLoading(true);
     setFilteredSavedMovies(MoviesFilter(savedMoviesList, data, setMovieEmpty));
     setIsLoading(false);
   }
 
-// localStorage.clear()
   function handleCheckboxSearch(data) {
     setIsLoading(true);
     setFilteredMovies(MoviesFilter(moviesList, data, setMovieEmpty));
@@ -230,8 +231,6 @@ function App() {
     setFilteredSavedMovies(MoviesFilter(savedMoviesList, data, setMovieEmpty));
     setIsLoading(false);
   }
-
-  // localStorage.clear()
 
   function showCards() {
 
@@ -315,14 +314,6 @@ function App() {
     }
   }
 
-  function restoreSavedCheckboxStatus() {
-    const checkbox = document.getElementById('short-film-saved');
-    const searchChecked = localStorage.getItem('searchQuerySavedChecked') ==='true';
-    if(searchChecked) {
-      checkbox.checked = true
-    }
-  }
-
   function handleProfileSubmit(data, e) {
     const form = e.target.closest('form');
     setOnSubmit(true);
@@ -365,8 +356,8 @@ function App() {
   function handleCardLike(data) {
     api.createMovie({data})
       .then((res) => {
-        const a = [...savedMoviesList, res]
-        setSavedMoviesList(a)
+        const updateList = [...savedMoviesList, res]
+        setSavedMoviesList(updateList)
       })
       .catch((err) => {
         console.log(`Ошибка.....: ${err}`);
@@ -376,15 +367,12 @@ function App() {
   function handleDeleteMovie(data) {
 
     api.deleteMovie(data)
-      .then((res) => {
-        console.log(res);
-        api.getSavedMovies()
-        .then((res) => {
-          setSavedMoviesList(res);
-        })
-        .catch((err) => {
-          console.log(`Ошибка.....: ${err}`);
-        });
+      .then(() => {
+        const updateList = savedMoviesList
+          .filter(function(elem) {
+            return elem._id !== data
+          });
+        setSavedMoviesList(updateList);
       })
       .catch((err) => {
         console.log(`Ошибка.....: ${err}`);
@@ -411,12 +399,13 @@ function App() {
         screenWidth,
         handleButtonMoreClick,
         restoreCheckboxStatus,
-        restoreSavedCheckboxStatus,
         errorMessage,
         isError,
         setIsError,
         onSubmit,
-        setOnSubmit
+        setOnSubmit,
+        setFilteredSavedMovies,
+        savedMoviesList
       }}
     >
       <CurrentUserContext.Provider value={currentUser}>
@@ -435,7 +424,6 @@ function App() {
                 <ProtectedRouteElement
                   element={Movies}
                   filteredList={filteredMovies}
-                  savedMoviesList={savedMoviesList}
                   movieSearch={handleMovieSearch}
                   likeMovie={handleCardLike}
                   deleteMovie={handleDeleteMovie}

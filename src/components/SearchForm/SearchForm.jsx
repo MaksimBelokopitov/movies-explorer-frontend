@@ -1,7 +1,7 @@
 import './SearchForm.css';
 import useLocalStorageState from '../../hooks/useLocalStorageState';
 import { AppContext } from '../../context/AppContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 function SearchForm({
   movieSearch,
   isSavedMovies,
@@ -12,8 +12,12 @@ function SearchForm({
   const [searchQueryMovie, setSearchQueryMovie] = useLocalStorageState('searchQueryMovie', '');
   const [searchQueryChecked, setSearchQueryChecked] = useLocalStorageState('searchQueryChecked', false);
 
-  const [searchQuerySavedMovie, setSearchQuerySavedMovie] = useLocalStorageState('searchQuerySavedMovie', '');
-  const [searchQuerySavedChecked, setSearchQuerySavedChecked] = useLocalStorageState('searchQuerySavedChecked', false);
+  // const [searchQuerySavedMovie, setSearchQuerySavedMovie] = useLocalStorageState('searchQuerySavedMovie', '');
+  // const [searchQuerySavedChecked, setSearchQuerySavedChecked] = useLocalStorageState('searchQuerySavedChecked', false);
+
+
+  const [searchQuerySavedMovie, setSearchQuerySavedMovie] = useState('');
+  const [searchQuerySavedChecked, setSearchQuerySavedChecked] = useState(false);
 
   const handleChange = (e) => {
     const {value} = e.target

@@ -7,7 +7,6 @@ import { SHORT_MOVIE_TIME_COUNT } from '../../utils/constants';
 function MoviesCard({
   card,
   deleteMovie,
-  savedMoviesList,
   likeMovie,
 }) {
 
@@ -17,7 +16,7 @@ function MoviesCard({
   let isLiked
 
   if(location.pathname ==='/movies'){
-    isLiked = savedMoviesList.some(i => i.movieId === card.id)
+    isLiked = appContext.savedMoviesList.some(i => i.movieId === card.id)
   };
 
   if((card.image.url !== null && card.image.url !== undefined)){
@@ -35,7 +34,7 @@ function MoviesCard({
 
   function handleLikeClick() {
     if(isLiked){
-      savedMoviesList.forEach(element => {
+      appContext.savedMoviesList.forEach(element => {
         if(element.movieId === card.id) {
           deleteMovie(element._id)
         }

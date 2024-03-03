@@ -8,7 +8,6 @@ import { MOVIE_SEARCH_ERR, MOVIE_SEARCH_EMPTY } from '../../utils/constants';
 
 function Movies({
   filteredList,
-  savedMoviesList,
   movieSearch,
   likeMovie,
   deleteMovie,
@@ -45,7 +44,6 @@ function Movies({
       {appContext.cardListVisible&&
         <MoviesCardList
           filteredList={filteredList}
-          savedMoviesList={savedMoviesList}
           likeMovie={likeMovie}
           deleteMovie={deleteMovie}
           buttonMoreVisible={buttonMoreVisible}

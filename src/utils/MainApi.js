@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.movieboxs.nomoredomainsmonster.ru';
+export const BASE_URL = 'https://api.movieboxs.nomoredomainsmonster.ru'
 
 function getRequest(url, options) {
   return fetch(url, options)
